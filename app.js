@@ -125,7 +125,7 @@ function getNextPalindrome(date) {
     var palindrome = checkAllPalindrome(nextDate);
     if (palindrome) {
       return (
-        "After " +
+        "This date is not palindrome, Though after " +
         ctr +
         " day(s), Next Palindrome is on " +
         nextDate.day +
@@ -141,8 +141,10 @@ function getNextPalindrome(date) {
 
 function findPalindromeOrNextPalindrome(date) {
   if (checkAllPalindrome(date)) {
+    document.body.classList.add("bg-green-100");
     return "Congratulations, Your BirthDay is Palindrome :)";
   } else {
+    document.body.classList.add("bg-red-100");
     return getNextPalindrome(date);
   }
 }
@@ -153,6 +155,8 @@ const outputEl = document.getElementById("output-div");
 
 formSubmit.addEventListener("submit", function handleFormSubmit(e) {
   e.preventDefault();
+  document.body.classList.remove("bg-green-100");
+  document.body.classList.remove("bg-red-100");
   var bdayDate = dateInput.value;
   // console.log(bdayDate);
 
@@ -177,3 +181,17 @@ formSubmit.addEventListener("submit", function handleFormSubmit(e) {
 // };
 
 // console.log(getNextPalindrome(date));
+
+// navbar js
+
+// get variables
+
+const btn = document.querySelector("button.mobile-nav-btn");
+const menu = document.querySelector(".mobile-nav");
+
+// event toggle
+
+btn.addEventListener("click", () => {
+  menu.classList.toggle("hidden");
+  console.log("clicked");
+});
